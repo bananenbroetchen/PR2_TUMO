@@ -4,8 +4,8 @@
 // Option + Shift + F = Dokument formatieren
 
 
-let canvasXY = 900;
-let XY = 50;
+let canvasXY = 750;
+let XY = 10;
 let matrix = [];
 let RandomNumber1;
 let RandomNumber2;
@@ -26,24 +26,24 @@ let MowingMachineArray = [];
 
 function setup() {
     createCanvas(canvasXY, canvasXY);
-    frameRate(60);
+    frameRate(10);
     erstelleMatrix();
     noStroke();
 
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 2; i++) {
         let  z = (Math.floor(Math.random() * XY))
         let  s = (Math.floor(Math.random() * XY))
         let r = new GrasTemplate(z,s)
         GrasArray.push(r)
     }
-/*
-    for (let i = 0; i < 10; i++) {
+
+    for (let i = 0; i < 2; i++) {
         let  z = (Math.floor(Math.random() * XY))
         let  s = (Math.floor(Math.random() * XY))
         let r = new MowingMachineTemplate(z,s)
         MowingMachineArray.push(r)
     }
-*/
+
 }
 
 function draw() {
@@ -51,10 +51,10 @@ function draw() {
     for (let i = 0; i < GrasArray.length; i++) {
         GrasArray[i].machSchrittNachVorne();
     }
-    /*
+    
     for (let i = 0; i < MowingMachineArray.length; i++) {
         MowingMachineArray[i].machSchrittNachVorne();
     }
-    */
+    
     zeichneMatrix();
 }
