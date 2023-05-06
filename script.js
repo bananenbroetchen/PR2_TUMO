@@ -3,6 +3,8 @@
 //Command + K + C bzw. Command + K + U = In Kommentar/Code umwandeln
 // Option + Shift + F = Dokument formatieren
 
+// Das hier ist ein Test, ob GitHub funktioniert.
+
 let canvasXY = 900;
 let XY = 50;
 let matrix = [];
