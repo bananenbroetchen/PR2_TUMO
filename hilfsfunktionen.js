@@ -6,7 +6,7 @@ function erstelleMatrix() {
             matrixTemp.push(0)
 
         }
-        matrix.push(matrixTemp)
+        matrix.push(matrixTemp);
         matrixTemp = [];
     }
 }
