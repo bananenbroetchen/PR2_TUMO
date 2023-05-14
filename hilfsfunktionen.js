@@ -6,7 +6,7 @@ function erstelleMatrix() {
             matrixTemp.push(0)
 
         }
-        matrix.push(matrixTemp);
+        matrix.push(matrixTemp)
         matrixTemp = [];
     }
 }
@@ -29,4 +29,14 @@ function zeichneMatrix() {
         }
 
     }
+}
+
+function löschObjektAusObjektArray(zeile, spalte) {
+    let index = ObjektArray.findIndex(function(objekt) {
+        if (objekt.zeile === zeile && objekt.spalte === spalte){
+            return true;
+        } else return false;
+    });
+    ObjektArray.splice(index,1);
+
 }

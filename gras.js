@@ -1,29 +1,42 @@
 class GrasTemplate {
     zeile;
     spalte;
+    energie = 0;
     constructor(z,s) {
         this.zeile = z;
         this.spalte = s;
         this.platziereSelbstInMatrix();
     };
     platziereSelbstInMatrix() {
-        matrix[this.zeile][this.spalte] = 3;
+        matrix[this.zeile][this.spalte] = 1;
     };
-    machSchrittNachVorne() {
-        // 1. Scan die Felder um dich herum und
-        // finde heraus, welche Grasfelder sind.
-        let grasFelder = this.findeGrasFelder();
 
-        if (grasFelder.length > 0) {
-            RandomNumber1 = Math.floor(Math.random() * grasFelder.length)
-            let grasFeld = grasFelder[RandomNumber1]
-            matrix[this.zeile][this.spalte] = 1;
-            this.zeile = grasFeld[0];
-            this.spalte = grasFeld[1];
-            this.platziereSelbstInMatrix()
+    spielzug() {
+        this.energie++
+        if (this.energie > Math.floor(Math.random()*20+5)) {
+            this.pflanzNeueGrasZelle()
+            this.energie = 0;
         }
     };
-    findeGrasFelder() {
+    pflanzNeueGrasZelle () {
+                // 1. Scan die Felder um dich herum und
+        // finde heraus, welche erdeFelder sind.
+        let erdeFelder = this.findeErdeFelder();
+
+        if (erdeFelder.length > 0) {
+            let erdeFeld = erdeFelder[0];
+            let neueGrasZelle = new GrasTemplate(erdeFeld[0], erdeFeld[1]);
+            ObjektArray.push(neueGrasZelle);
+            /* RandomNumber1 = Math.floor(Math.random() * erdeFelder.length)
+            let erdeFeld = erdeFelder[RandomNumber1]
+            matrix[this.zeile][this.spalte] = 1;
+            this.zeile = erdeFeld[0];
+            this.spalte = erdeFeld[1];
+            this.platziereSelbstInMatrix() */
+        }
+    }
+
+    findeErdeFelder() {
         // 1. Findet heraus, welche die Felder
         // links, rechts, oben und unten vom Rasendestroyer sind
         let benachbarteFelder = [
@@ -33,20 +46,21 @@ class GrasTemplate {
             [this.zeile, this.spalte - 1]
         ]
 
-        let grasFelder = benachbarteFelder.filter(this.istGras)
-        return grasFelder
+        let erdeFelder = benachbarteFelder.filter(this.istErde)
+        return erdeFelder
         // 2. Filtert diese Koordinatenliste, so dass nur die
-        // Koordinaten übrig bleiben, die Grasfelder darstellen
+        // Koordinaten übrig bleiben, die erdeFelder darstellen
 
-        // 3. returned diese Liste an Grasfeldern.
+        // 3. returned diese Liste an erdeFeldern.
     };
-    istGras(koordinatenPaar) {
+    istErde(koordinatenPaar) {
         let zeile = koordinatenPaar[0];
         let spalte = koordinatenPaar[1];
         if (zeile >= 0 &&
             spalte >= 0 &&
             zeile < XY &&
-            spalte < XY) {
+            spalte < XY &&
+            matrix[zeile][spalte] === 0) {
             return true;
         } else {
             return false;

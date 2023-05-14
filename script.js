@@ -2,59 +2,47 @@
 
 //Command + K + C bzw. Command + K + U = In Kommentar/Code umwandeln
 // Option + Shift + F = Dokument formatieren
+let oneTimeAction = false;
+let RandomNumber1 = 0;
+let RandomNumber2 = 0;
+let i5 = 0;
 
-
-let canvasXY = 750;
-let XY = 10;
+let canvasXY = 900;
+let XY = 100;
 let matrix = [];
-let RandomNumber1;
-let RandomNumber2;
-
-
-
-
 
 let anzahlMowingMachine = 5;
 let anzahlGras = 2;
-let GrasArray = [];
-
+let ObjektArray = [];
 
 let mowingMachine1;
 let Gras1;
 
-let MowingMachineArray = [];
-
 function setup() {
     createCanvas(canvasXY, canvasXY);
-    frameRate(10);
+    frameRate(60);
     erstelleMatrix();
     noStroke();
 
-    for (let i = 0; i < 2; i++) {
-        let  z = (Math.floor(Math.random() * XY))
-        let  s = (Math.floor(Math.random() * XY))
-        let r = new GrasTemplate(z,s)
-        GrasArray.push(r)
-    }
-
-    for (let i = 0; i < 2; i++) {
-        let  z = (Math.floor(Math.random() * XY))
-        let  s = (Math.floor(Math.random() * XY))
-        let r = new MowingMachineTemplate(z,s)
-        MowingMachineArray.push(r)
-    }
-
+    ObjektArray.push(new GrasTemplate(Math.floor(Math.random() * XY), Math.floor(Math.random() * XY)))
+    ObjektArray.push(new GrasTemplate(0.5*XY, 0.5*XY))
 }
 
 function draw() {
 
-    for (let i = 0; i < GrasArray.length; i++) {
-        GrasArray[i].machSchrittNachVorne();
+    for (let i = 0; i < ObjektArray.length; i++) {
+        ObjektArray[i].spielzug();
     }
-    
-    for (let i = 0; i < MowingMachineArray.length; i++) {
-        MowingMachineArray[i].machSchrittNachVorne();
+    if (oneTimeAction === false && i5 >200) {
+        ObjektArray.push(new MowingMachineTemplate(0.5*XY, 0.5*XY));
+        oneTimeAction = true;
     }
+    i5++
     
     zeichneMatrix();
+    console.log(ObjektArray.length + " Grasfelder")
+    if (ObjektArray.length > (XY*XY)-2) {
+        oneTimeAction = false
+    }
 }
+
