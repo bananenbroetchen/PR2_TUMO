@@ -11,17 +11,24 @@
     <script src="hilfsfunktionen.js"></script>
     <script src="farben.js"></script>
     <script src="mowingmachine.js"></script>
+    <script src="wolf.js"></script>
     <script src="gras.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+
     <h1>
         Mein Spiel
     </h1>
-    JAAA
-    
-    <button>
-        hallo
-    </button>
-</body>
+    Automatischer Respawn von Schafen:
+    <label>
+        <input type="checkbox" id="codeSwitch" onchange="toggleCodeBlock()" />
+    </label>
+    Wolf spawnen:
+    <input type="button" onclick="toggleWolfSpawn()">
+    <div class="slidecontainer">
+        <input type="range" min="1" max="60" value="20" class="FPSslider" id="myRange">
+      </div>
+    FPS
 
+</body>
 </html>

@@ -38,5 +38,20 @@ function löschObjektAusObjektArray(zeile, spalte) {
         } else return false;
     });
     ObjektArray.splice(index,1);
-
 }
+
+function toggleCodeBlock() {
+    var codeSwitch = document.getElementById("codeSwitch");
+    var codeBlockEnabled = codeSwitch.checked;
+
+    if (codeBlockEnabled) {
+        oneTimeActionPossible = true;
+    } else {
+        oneTimeActionPossible = false;
+    }
+}
+
+function toggleWolfSpawn() {
+    ObjektArray.push(new WolfTemplate(0.5*XY, 0.5*XY));
+}
+

@@ -17,7 +17,6 @@ class MowingMachineTemplate {
         } else if (this.energie > 0) {
             let grasFelder = this.findeGrasFelder();
             if (grasFelder.length > 0) {
-
                 this.energie++
                 this.machSchrittNachVorne()
             } else {
