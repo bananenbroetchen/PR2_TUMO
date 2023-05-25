@@ -54,4 +54,3 @@ function toggleCodeBlock() {
 function toggleWolfSpawn() {
     ObjektArray.push(new WolfTemplate(0.5*XY, 0.5*XY));
 }
-
